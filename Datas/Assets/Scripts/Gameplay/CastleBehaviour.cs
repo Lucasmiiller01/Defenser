@@ -32,25 +32,23 @@ public class CastleBehaviour : MonoBehaviour {
 		{
 			opa = Time.fixedTime;
 			atualnumber ++;
+			print(opa);
 		}
 		score_t.text = "Your Score:\n" + atualnumber.ToString ();
 		record_t.text = "Your Best:\n" + record.ToString();
 	}
-    public void DamageMe(float damaged)
+   
+	public void DamageMe(float damaged)
 	{
 		GameObject canvas = GameObject.Find("Canvas");
 		canvas.GetComponent<Canvas>().sortingOrder = 5;
 		gameOver.SetActive(true);
 		lose = true;
-		opa = Time.fixedTime;
 		GetComponent<ScoreManaher> ().enabled = true;
-		if (PlayerPrefs.HasKey ("Record") && Enemy.destroyerTotal > PlayerPrefs.GetFloat ("Record") || !PlayerPrefs.HasKey("Record")) 
-		{
-			PlayerPrefs.SetFloat("Record", Enemy.destroyerTotal);
-			newrecord.SetActive(true);
+		if (PlayerPrefs.HasKey ("Record") && Enemy.destroyerTotal > PlayerPrefs.GetFloat ("Record") || !PlayerPrefs.HasKey ("Record")) {
+			PlayerPrefs.SetFloat ("Record", Enemy.destroyerTotal);
+			newrecord.SetActive (true);
 
 		}
-
-
     }
 }
